@@ -24,7 +24,7 @@ class PotterBooksTest(unittest.TestCase):
 
         self.assertEqual(result, expected)
 
-    def test_regular_price(self):
+    def test_shopping_basket(self):
         basket = ShoppingBasket()
         expected = [0, 2, 0, 1, 0]
         basket.set_books(4, 2, 2)
@@ -34,15 +34,55 @@ class PotterBooksTest(unittest.TestCase):
 
         self.assertEqual(result, expected)
 
-    def test_one_book_for_8_euros(self):
+    def test_regular_price_of_one_book(self):
         basket = ShoppingBasket()
         expected = 8
         basket.set_books(4)
         basket.set_shopping_basket()
 
-        result = basket.get_shopping_basket()
+        result = basket.get_regular_price()
 
         self.assertEqual(result, expected)
+
+    def test_regular_price_of_any_amount_book(self):
+        basket = ShoppingBasket()
+        expected = 40
+        basket.set_books(4, 5, 3, 5, 2)
+        basket.set_shopping_basket()
+
+        result = basket.get_regular_price()
+
+        self.assertEqual(result, expected)
+
+    def test_price_with_5_percent_discount(self):
+        basket = ShoppingBasket()
+        expected = 15.2
+        basket.set_books(1, 5)
+        basket.set_shopping_basket()
+
+        result = basket.get_price_with_discount()
+
+        self.assertEqual(result, expected)
+
+    # def test_5_percent_discount(self):
+    #     basket = ShoppingBasket()
+    #     expected = 0.8
+    #     basket.set_books(4, 5)
+    #     basket.set_shopping_basket()
+    #
+    #     result = basket.get_discount()
+    #
+    #     self.assertEqual(result, expected)
+
+    # def test_two_same_books(self):
+    #     basket = ShoppingBasket()
+    #     expected = 16
+    #     input = 2, 2
+    #
+    #     result = basket.get_price_with_discount(input)
+    #
+    #     self.assertEqual(result, expected)
+
 
 if __name__ == "__main__":
     unittest.main()
