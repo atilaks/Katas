@@ -71,19 +71,21 @@ class PotterBooksTest(unittest.TestCase):
         basket.set_shopping_basket()
         basket.set_distinct_books()
 
-        result = basket._sets
+        result = basket._distinct_books
 
         self.assertEqual(result, expected)
 
-    # def test_price_with_5_percent_discount(self):
-    #     basket = ShoppingBasket()
-    #     expected = 15.2
-    #     basket.set_books(1, 5)
-    #     basket.set_shopping_basket()
-    #
-    #     result = basket.get_price_with_discount()
-    #
-    #     self.assertEqual(result, expected)
+    def test_price_with_5_percent_discount(self):
+        basket = ShoppingBasket()
+        expected = 15.2
+        basket.set_books(1, 5)
+        basket.set_amount_books_selected()
+        basket.set_shopping_basket()
+        basket.set_distinct_books()
+
+        result = basket.get_price_with_discount()
+
+        self.assertEqual(result, expected)
 
     # def test_5_percent_discount(self):
     #     basket = ShoppingBasket()
