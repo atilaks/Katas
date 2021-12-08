@@ -2,7 +2,7 @@ class Articles:
     def __init__(self):
         self._select_books = []                     # Libros seleccionados
         self._amount_books = 0                      # Cantidad de libros seleccionados
-        self._types_of_books = 5                    # Tipos posibles de libros
+        self._types_of_books = 7                    # Tipos posibles de libros
 
     def set_books(self, *args):
         """
@@ -25,11 +25,11 @@ class ShoppingBasket(Articles):
 
     def __init__(self):
         super().__init__()
-        self._shopping_basket = [0, 0, 0, 0, 0]         # Cesta de la compra
+        self._shopping_basket = [0, 0, 0, 0, 0, 0, 0]         # Cesta de la compra
         self._distinct_books = 0                        # Tipos de libros en cesta
         self._unaccounted_books = self._amount_books    # Libros no contados
         self._first_price = 8                           # Valor de cada libro
-        self._discount_list = [0, 5, 10, 20, 25]        # Lista de descuentos
+        self._discount_list = [0, 5, 10, 20, 25, 40, 50]        # Lista de descuentos
         self._price_without_discount = 0                # Precio sin descuento
         self._price_with_discount = 0                   # Precio con descuento
 

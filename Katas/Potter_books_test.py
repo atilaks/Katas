@@ -26,7 +26,7 @@ class PotterBooksTest(unittest.TestCase):
 
     def test_shopping_basket(self):
         basket = ShoppingBasket()
-        expected = [0, 2, 0, 1, 0]
+        expected = [0, 2, 0, 1, 0, 0, 0]
         basket.set_books(4, 2, 2)
         basket.set_shopping_basket()
 
@@ -123,6 +123,33 @@ class PotterBooksTest(unittest.TestCase):
         basket = ShoppingBasket()
         expected = 53.2
         basket.set_books(1, 1, 1, 2, 2, 3, 4, 5)
+
+        result = basket.get_core_method()
+
+        self.assertEqual(result, expected)
+
+    def test_7_books(self):
+        basket = ShoppingBasket()
+        expected = 28
+        basket.set_books(1, 2, 3, 4, 5, 6, 7)
+
+        result = basket.get_core_method()
+
+        self.assertEqual(result, expected)
+
+    def test_random1(self):
+        basket = ShoppingBasket()
+        expected = 44
+        basket.set_books(1, 2, 3, 4, 5, 6, 1, 6)
+
+        result = basket.get_core_method()
+
+        self.assertEqual(result, expected)
+
+    def test_random2(self):
+        basket = ShoppingBasket()
+        expected = 29.6
+        basket.set_books(7, 6, 5, 5)
 
         result = basket.get_core_method()
 
