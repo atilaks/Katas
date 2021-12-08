@@ -82,29 +82,51 @@ class PotterBooksTest(unittest.TestCase):
         basket.set_amount_books_selected()
         basket.set_shopping_basket()
         basket.set_distinct_books()
+        basket.set_processed_books()
 
         result = basket.get_price_with_discount()
 
         self.assertEqual(result, expected)
 
-    # def test_5_percent_discount(self):
-    #     basket = ShoppingBasket()
-    #     expected = 0.8
-    #     basket.set_books(4, 5)
-    #     basket.set_shopping_basket()
-    #
-    #     result = basket.get_discount()
-    #
-    #     self.assertEqual(result, expected)
+    def test_two_same_books(self):
+        basket = ShoppingBasket()
+        expected = 16
+        basket.set_books(1, 1)
+        basket.set_amount_books_selected()
+        basket.set_shopping_basket()
+        basket.set_distinct_books()
+        basket.set_processed_books()
 
-    # def test_two_same_books(self):
-    #     basket = ShoppingBasket()
-    #     expected = 16
-    #     input = 2, 2
-    #
-    #     result = basket.get_price_with_discount(input)
-    #
-    #     self.assertEqual(result, expected)
+        result = basket.get_price_with_discount()
+
+        self.assertEqual(result, expected)
+
+    def test_core_calculator(self):
+        basket = ShoppingBasket()
+        expected = 16
+        basket.set_books(1, 1)
+
+        result = basket.get_core_method()
+
+        self.assertEqual(result, expected)
+
+    def test_3_different_books(self):
+        basket = ShoppingBasket()
+        expected = 29.6
+        basket.set_books(1, 1, 3, 2)
+
+        result = basket.get_core_method()
+
+        self.assertEqual(result, expected)
+
+    def test_any_combination(self):
+        basket = ShoppingBasket()
+        expected = 53.2
+        basket.set_books(1, 1, 1, 2, 2, 3, 4, 5)
+
+        result = basket.get_core_method()
+
+        self.assertEqual(result, expected)
 
 
 if __name__ == "__main__":
