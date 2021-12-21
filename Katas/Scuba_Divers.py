@@ -2,11 +2,12 @@ class Game:
     def __init__(self):
         self.oxygen = 150               # Oxigeno del buceador
         self.depth = 0                  # Profundidad del buceador
-        self.sea_level_flag = False     # Flag nivel del mar
         self.move = 1                   # Movimiento por defecto
         self.points = 0                 # Puntuación
 
     def core_method(self, action):      # Función principal
+        if self.depth == 0 and action == "Up":
+            return "No puedes subir más"
         self.set_action(action)
         if self.oxygen == 0 or self.depth == 0:
             return self.check_end_game()
@@ -30,6 +31,8 @@ class Game:
     def check_end_game(self):           # Detonantes de fin de partida
         if self.oxygen <= 0:
             return "Mueres. No puntúas"
+        else:
+            return "Has terminado la partida.\n" + self.get_points()
 
     def set_action(self, action):       # Determina la acción
         if action == "Down":

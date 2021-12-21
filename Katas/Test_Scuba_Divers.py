@@ -60,14 +60,14 @@ class TestScubaDivers(unittest.TestCase):
 
         self.assertEqual(expected, result)
 
-    # def test_sea_level(self):
-    #     diver1 = Game()
-    #     expected = "No puedes subir más"
-    #     action = "Up"
-    #
-    #     result = diver1.core_method(action)
-    #
-    #     self.assertEqual(expected, result)
+    def test_sea_level(self):
+        diver1 = Game()
+        expected = "No puedes subir más"
+        action = "Up"
+
+        result = diver1.core_method(action)
+
+        self.assertEqual(expected, result)
 
     def test_core_method(self):
         diver1 = Game()
@@ -89,15 +89,17 @@ class TestScubaDivers(unittest.TestCase):
 
         self.assertEqual(expected, result)
 
-    # def test_end_game(self):
-    #     diver1 = Game()
-    #     expected = "Has terminado la partida. "
-    #     diver1.set_parameters(140, 0)
-    #     diver1.set_action("Up")
-    #
-    #     result = diver1.get_status()
-    #
-    #     self.assertEqual(expected, result)
+    def test_end_game(self):
+        diver1 = Game()
+        expected = "Has terminado la partida.\nPuntos: 3"
+        diver1.set_parameters(140, 3)
+        diver1.set_action("Up")
+        diver1.set_action("Up")
+        action = "Up"
+
+        result = diver1.core_method(action)
+
+        self.assertEqual(expected, result)
 
 
 if __name__ == '__main__':
