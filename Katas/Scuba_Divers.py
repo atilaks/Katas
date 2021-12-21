@@ -6,19 +6,30 @@ class Game:
         self.move = 1                   # Movimiento por defecto
         self.points = 0                 # Puntuación
 
+    def core_method(self, action):      # Función principal
+        self.set_action(action)
+        if self.oxygen == 0 or self.depth == 0:
+            return self.check_end_game()
+        else:
+            return self.get_status()
+
     def get_oxygen(self):               # Devuelve el nivel actual de oxígeno
-        return self.oxygen
+        return "Oxígeno: " + str(self.oxygen)
 
     def get_depth(self):                # Devuelve el nivel actual de profundidad
-        return self.depth
+        return "Profundidad: " + str(self.depth)
+
+    def get_points(self):               # Devuelve la cantidad actual de puntos
+        return "Puntos: " + str(self.points)
 
     def get_status(self):               # Devuelve el estado actual de profundiad y oxígeno
+        return self.get_oxygen() + "\n" + \
+               self.get_depth() + "\n" + \
+               self.get_points()
+
+    def check_end_game(self):           # Detonantes de fin de partida
         if self.oxygen <= 0:
             return "Mueres. No puntúas"
-        return "Oxígeno: " + str(self.oxygen) + ". Profundidad: " + str(self.depth)
-
-    def get_points(self):
-        return self.points
 
     def set_action(self, action):       # Determina la acción
         if action == "Down":
@@ -40,7 +51,7 @@ class Game:
     def set_action_keep(self):          # Acción de mantenerse
         self.oxygen -= self.move / 2
 
-    def set_points(self):
+    def set_points(self):               # Suma puntos
         self.points += self.depth
 
     def set_parameters(self, oxygen, depth):
