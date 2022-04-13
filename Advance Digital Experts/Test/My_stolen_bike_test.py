@@ -1,8 +1,9 @@
 import unittest
-from My_stolen_bike import *
+from bike import Bike
+from department import Department
 
 bike_description = ["00001AAA", "rojo", "carretera", "desaparecida", "Jose García",
-                    "19/03/2022", "sin descripción", "sin dirección"]
+                    "19/03/2022", "sin descripción", "c/Francisco de Goya, 3"]
 
 
 class TestStolenBike(unittest.TestCase):
@@ -50,7 +51,7 @@ class TestStolenBike(unittest.TestCase):
         bike.set_bike(bike_description)
         expected = {"license": "00001AAA", "color": "rojo", "type": "carretera",
                     "status": "desaparecida", "owner": "Jose García", "date": "19/03/2022",
-                    "description": "sin descripción", "address": "sin dirección",
+                    "description": "sin descripción", "address": "c/Francisco de Goya, 3",
                     "department": "not assigned"}
 
         # Act
@@ -80,6 +81,30 @@ class TestStolenBike(unittest.TestCase):
 
         # Act
         result = status.set_status()
+
+        # Assert
+        self.assertEqual(expected, result)
+
+    def test_bike_address(self):
+        # Arrange
+        bike = Bike()
+        expected = "c/Francisco de Goya, 3"
+        bike.set_bike(bike_description)
+
+        # Act
+        result = bike.get_address()
+
+        # Assert
+        self.assertEqual(expected, result)
+
+    def test_bike_address(self):
+        # Arrange
+        bike = Bike()
+        expected = "c/Francisco de Goya, 3"
+        bike.set_bike(bike_description)
+
+        # Act
+        result = bike.get_address()
 
         # Assert
         self.assertEqual(expected, result)
