@@ -1,17 +1,11 @@
 import random
 
 
-class Department:
+class IncidentManager:
 
-    def __init__(self):
-        self._department = ["departmentA", "departmentB"]
-        self.available_department = False
-
-    def set_department_availability(self):
-        if self.available_department:
-            self.available_department = False
-        else:
-            self.available_department = True
+    @staticmethod
+    def recorded_incident():
+        return "Se ha registrado un el incidente"
 
     def set_department(self):
         if self.available_department:
@@ -22,3 +16,9 @@ class Department:
 
     def get_random_departments(self):
         return self._department[random.randint(0, len(self._department))]
+
+    def set_department_availability(self):
+        if self.available_department:
+            self.available_department = False
+        else:
+            self.available_department = True
