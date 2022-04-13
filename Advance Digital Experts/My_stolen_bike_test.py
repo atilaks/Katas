@@ -18,8 +18,10 @@ class TestStolenBike(unittest.TestCase):
         # Arrange
         bike = Bike()
         bike_description = ["00001AAA", "rojo", "carretera", "desaparecida", "Jose García",
-                            "19/03/2022", "Sin descripción", "sin dirección"]
-        expected = bike_description
+                            "19/03/2022", "sin descripción", "sin dirección"]
+        expected = {"license": "00001AAA", "color": "rojo", "type": "carretera",
+                    "status": "desaparecida", "owner": "Jose García", "date": "19/03/2022",
+                    "description": "sin descripción", "address": "sin dirección"}
         bike.set_bike(bike_description)
 
         # Act
