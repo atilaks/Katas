@@ -126,7 +126,19 @@ class TestStolenBike(unittest.TestCase):
         self.assertEqual(expected, result)
 
     def test_define_bike_from_whistleblower(self):
-        pass
+        # Arrange
+        case = Whistleblower()
+        case.set_whistleblower(whistleblower)
+        case.set_bike_instance()
+        expected = {"license": "00001AAA", "color": "rojo", "type": "carretera",
+                    "status": "desaparecida", "owner": "Jose García", "date": "19/03/2022",
+                    "description": "sin descripción", "address": "c/Francisco de Goya, 3"}
+
+        # Act
+        result = case.get_whistleblower()
+
+        # Assert
+        self.assertEqual(expected, result)
 
     def test_define_complaint_from_whistleblower(self):
         pass

@@ -1,3 +1,6 @@
+from bike import Bike
+
+
 class Whistleblower:
     def __init__(self):
         self._whistleblower = {"complaint": "", "license": "", "color": "", "type": "", "status": "",
@@ -11,3 +14,6 @@ class Whistleblower:
 
     def get_whistleblower(self):
         return self._whistleblower
+
+    def set_bike_instance(self):
+        Bike().set_bike(for i in self._whistleblower.values(): self._bike[i] = test[counter])
