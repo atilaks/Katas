@@ -6,6 +6,7 @@ class Individual:
         self._surname = individual["surname"]
         self._passport = individual["passport"]
 
+
     @property
     def full_description(self):
         return {"name": self.name, "surname": self.surname, "passport": self.passport}
