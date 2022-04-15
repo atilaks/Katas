@@ -27,8 +27,8 @@ class Player():
 
 
 class AboutExtraCredit(Koan):
-    # Write tests here. If you need extra test classes add them to the
-    # test suite in runner/path_to_enlightenment.py
+    # Write tests here. If you need extra tests classes add them to the
+    # tests suite in runner/path_to_enlightenment.py
     def test_extra_credit_task(self):
         pass
 

@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 '''
-Functions to load the test cases ("koans") that make up the
+Functions to load the tests cases ("koans") that make up the
 Path to Enlightenment.
 '''
 

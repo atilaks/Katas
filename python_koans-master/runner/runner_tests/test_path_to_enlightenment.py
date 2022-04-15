@@ -18,8 +18,8 @@ class TestFilterKoanNames(unittest.TestCase):
 
     def test_names_yielded_match_names_in_file(self):
         names = [
-          'this.is.a.test',
-          'this.is.only.a.test',
+          'this.is.a.tests',
+          'this.is.only.a.tests',
           ]
         infile = io.StringIO('\n'.join(names))
         received = list(pte.filter_koan_names(infile))
@@ -28,16 +28,16 @@ class TestFilterKoanNames(unittest.TestCase):
 
     def test_whitespace_is_stripped(self):
         names = [
-          'this.is.a.test',
+          'this.is.a.tests',
           '    white.space.should.be.stripped',
-          'this.is.only.a.test',
+          'this.is.only.a.tests',
           'white.space.should.be.stripped    ',
           ]
         infile = io.StringIO('\n'.join(names))
         expected = [
-          'this.is.a.test',
+          'this.is.a.tests',
           'white.space.should.be.stripped',
-          'this.is.only.a.test',
+          'this.is.only.a.tests',
           'white.space.should.be.stripped',
           ]
         received = list(pte.filter_koan_names(infile))
@@ -46,15 +46,15 @@ class TestFilterKoanNames(unittest.TestCase):
 
     def test_commented_out_names_are_excluded(self):
         names = [
-          'this.is.a.test',
+          'this.is.a.tests',
           '#this.is.a.comment',
-          'this.is.only.a.test',
+          'this.is.only.a.tests',
           '    #    this.is.also a.comment    ',
           ]
         infile = io.StringIO('\n'.join(names))
         expected = [
-          'this.is.a.test',
-          'this.is.only.a.test',
+          'this.is.a.tests',
+          'this.is.only.a.tests',
           ]
         received = list(pte.filter_koan_names(infile))
         self.assertListEqual(expected, received)

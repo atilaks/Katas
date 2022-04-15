@@ -1,15 +1,12 @@
 import unittest
-from Code.bike import Bike
-from Code.department import Department
-from Code.whistleblower import Whistleblower
-from Code.complaint import Complaint
-from Code.My_stolen_bike import IncidentManager
+from code import *
 
 
 bike_description = ["00001AAA", "rojo", "carretera", "desaparecida", "Jose García",
                     "19/03/2022", "sin descripción", "c/Francisco de Goya, 3"]
 whistleblower = ["Antonio García", "00001AAA", "rojo", "carretera", "desaparecida", "Jose García",
                  "19/03/2022", "sin descripción", "c/Francisco de Goya, 3"]
+agent = ["Roberto Medina", "256478", "departmentX"]
 
 
 class TestStolenBike(unittest.TestCase):
@@ -98,6 +95,30 @@ class TestStolenBike(unittest.TestCase):
         # Assert
         self.assertEqual(expected, result)
 
+    def test_available_list(self):
+        # Arrange
+        list = Department()
+        list.set_available_agent("256478")
+        expected = ["256478"]
+
+        # Act
+        result = list.get_available_list()
+
+        # Assert
+        self.assertEqual(expected, result)
+
+    def test_not_available_list(self):
+        # Arrange
+        list = Department()
+        list.set_not_available_agent("256478")
+        expected = ["256478"]
+
+        # Act
+        result = list.get_not_available_list()
+
+        # Assert
+        self.assertEqual(expected, result)
+
     def test_new_complaint(self):
         # Arrange
         person = Complaint()
@@ -106,6 +127,19 @@ class TestStolenBike(unittest.TestCase):
 
         # Act
         result = person.get_complaint()
+
+        # Assert
+        self.assertEqual(expected, result)
+
+    def test_new_agent(self):
+        # Arrange
+        new_assignment = Agent()
+        new_assignment.set_agent(agent)
+        expected = {"name": "Roberto Medina", "police_id": "256478",
+                    "department": "departmentX"}
+
+        # Act
+        result = new_assignment.get_agent()
 
         # Assert
         self.assertEqual(expected, result)
@@ -125,20 +159,20 @@ class TestStolenBike(unittest.TestCase):
         # Assert
         self.assertEqual(expected, result)
 
-    def test_define_bike_from_whistleblower(self):
-        # Arrange
-        case = Whistleblower()
-        case.set_whistleblower(whistleblower)
-        case.set_bike_instance()
-        expected = {"license": "00001AAA", "color": "rojo", "type": "carretera",
-                    "status": "desaparecida", "owner": "Jose García", "date": "19/03/2022",
-                    "description": "sin descripción", "address": "c/Francisco de Goya, 3"}
-
-        # Act
-        result = case.get_whistleblower()
-
-        # Assert
-        self.assertEqual(expected, result)
+    # def test_define_bike_from_whistleblower(self):
+    #     # Arrange
+    #     case = Whistleblower()
+    #     case.set_whistleblower(whistleblower)
+    #     case.set_bike_instance()
+    #     expected = {"license": "00001AAA", "color": "rojo", "type": "carretera",
+    #                 "status": "desaparecida", "owner": "Jose García", "date": "19/03/2022",
+    #                 "description": "sin descripción", "address": "c/Francisco de Goya, 3"}
+    #
+    #     # Act
+    #     result = case.get_whistleblower()
+    #
+    #     # Assert
+    #     self.assertEqual(expected, result)
 
     def test_define_complaint_from_whistleblower(self):
         pass
@@ -156,19 +190,19 @@ class TestStolenBike(unittest.TestCase):
         # Assert
         self.assertEqual(expected, result)
 
-    def test_unassigned_department(self):
-        # Arrange
-        incident = IncidentManager()
-        # Department().available_department = False
-        # Department().set_department_availability()
-        incident.set_bike(bike_description)
-        expected = "not assigned"
-
-        # Act
-        result = bike.get_department()
-
-        # Assert
-        self.assertEqual(expected, result)
+    # def test_unassigned_department(self):
+    #     # Arrange
+    #     incident = IncidentManager()
+    #     # Department().available_department = False
+    #     # Department().set_department_availability()
+    #     incident.set_bike(bike_description)
+    #     expected = "not assigned"
+    #
+    #     # Act
+    #     result = bike.get_department()
+    #
+    #     # Assert
+    #     self.assertEqual(expected, result)
 
 
 if __name__ == '__main__':
