@@ -2,7 +2,7 @@ import unittest
 from code import Bike
 
 
-class TestStolenBike(unittest.TestCase):
+class TestBike(unittest.TestCase):
     def setUp(self) -> None:
         self.bike_description = {"license": "00001AAA", "color": "rojo", "type": "carretera",
                                  "description": "sin descripción"}

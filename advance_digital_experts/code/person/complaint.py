@@ -1,9 +1,12 @@
-class Complaint:
-    def __init__(self):
-        self._complaint = ""
+from code.person.individual import Individual
+# TODO: METER INDIVIDUAL EN EL INIT
 
-    def set_complaint(self, name):
-        self._complaint = name
+# TODO: POSIBLEMENTE RECICLABLE
 
-    def get_complaint(self):
-        return self._complaint
+class Complaint(Individual):
+    # def __init__(self, bike):
+    #     self._bike = bike
+    #
+    # def bike_description(self):
+    #     return self._bike.full_description
+    pass

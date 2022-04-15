@@ -1,4 +1,20 @@
-class DepartmentManager:
+from code.person import Agent
+# TODO: NO ME DEJA INCORPORAR AGENT DESDE EL PAQUETE CODE
 
-    def __init__(self):
-        self._bike = {"name": "", "police_id": "", "department": ""}
+
+class DepartmentManager(Agent):
+    @property
+    def department(self):
+        return self._department
+
+    @department.setter
+    def department(self, new_department):
+        self._department = new_department
+
+    @property
+    def manager(self):
+        return self._manager
+
+    @manager.setter
+    def manager(self, new_status):
+        self._manager = new_status
